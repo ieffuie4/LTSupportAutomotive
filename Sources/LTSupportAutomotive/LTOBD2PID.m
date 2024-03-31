@@ -1343,7 +1343,7 @@
 
 -(NSString*)formattedResponse
 {
-    return [self formatSingleByteDoubleValueWithString:@"%.1f" UTF8_NARROW_NOBREAK_SPACE @"km" offset:0 factor:100.0 / 255.0];
+    return [self formatTwoByteDoubleValueWithString:@"%.1f" UTF8_NARROW_NOBREAK_SPACE @"km" offset:0 factor:1];
 }
 
 @end
