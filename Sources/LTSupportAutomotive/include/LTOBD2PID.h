@@ -638,6 +638,13 @@ typedef enum : NSUInteger {
 
 @end
 
+
+@interface LTOBD2PID_ODOMETER_A6 : LTOBD2PID
+
++(instancetype)pid NS_UNAVAILABLE;
+
+@end
+
 #pragma mark -
 #pragma mark Mode 03 – Show stored Diagnostic Trouble Codes
 

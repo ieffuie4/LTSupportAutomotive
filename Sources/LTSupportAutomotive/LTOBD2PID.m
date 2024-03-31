@@ -1692,6 +1692,26 @@
 
 @end
 
+@implementation LTOBD2PID_ODOMETER_A6
+
+- (NSString *)formattedResponse
+{
+    NSArray<NSNumber*>* bytes = [self anyResponseWithMinimumLength:4];
+
+    // see: https://en.wikipedia.org/wiki/OBD-II_PIDs#Service_01
+    // (A(2^24) + B(2^16) + C(2^8) + D) / 10
+    
+    uint A = bytes[0].unsignedIntValue;
+    uint B = bytes[1].unsignedIntValue;
+    uint C = bytes[2].unsignedIntValue;
+    uint D = bytes[3].unsignedIntValue;
+    
+    const double km = ((A << 24) + (B << 16) + (C << 8) + D) / 10;
+    return [NSString stringWithFormat:@"%0.2f" UTF8_NARROW_NOBREAK_SPACE @"km", km];
+}
+
+@end
+
 #pragma mark -
 #pragma mark Mode 03 – Show stored Diagnostic Trouble Codes
 
